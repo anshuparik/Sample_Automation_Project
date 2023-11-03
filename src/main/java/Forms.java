@@ -17,7 +17,7 @@ public class Forms {
         myelementsofFormspage.firstname().sendKeys("arvind");
         myelementsofFormspage.lastname().sendKeys("pareek");
         myelementsofFormspage.Email().sendKeys("abc@gmai.com");
-     // myelementsofFormspage.gender().click();
+        myelementsofFormspage.gender().click();
         WebElement mobileno = myelementsofFormspage.mobileno();
         js.executeScript("arguments[0].scrollIntoView();", mobileno);
         myelementsofFormspage.mobileno().sendKeys("1234567890");
