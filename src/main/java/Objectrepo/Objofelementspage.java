@@ -14,6 +14,7 @@ public Objofelementspage(WebDriver driver) {
     By Currentaddress = By.id("currentAddress");
     By PermanentAddress = By.id("permanentAddress");
     By Submit = By.id("submit");
+    By homecheckbox = By.xpath("//span[@class='rct-checkbox']");
 
 
     public WebElement Fullname() {
@@ -32,5 +33,9 @@ public Objofelementspage(WebDriver driver) {
 
     public WebElement Submit() {
         return driver.findElement(Submit);
+    }
+
+    public WebElement homecheckbox(){
+      return  driver.findElement(homecheckbox);
     }
 }
