@@ -3,8 +3,8 @@
 <suite name="All Test Suite">
 <test verbose="2" preserve-order="true" name="A:/Learn Automation/Sample Automation Project/src">
     <classes>
-        <class name="Elements"/>
-        <class name="Forms"/>
+        <class name="SampleSeleniumProject.Elements"/>
+        <class name="SampleSeleniumProject.Forms"/>
     </classes>
 
 </test>

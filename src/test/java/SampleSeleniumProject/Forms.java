@@ -1,3 +1,5 @@
+package SampleSeleniumProject;
+
 import Objectrepo.ObjofFormspage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

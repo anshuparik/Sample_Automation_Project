@@ -1,3 +1,5 @@
+package SampleSeleniumProject;
+
 import Objectrepo.Objofelementspage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
