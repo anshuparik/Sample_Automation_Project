@@ -1,4 +1,4 @@
-package Objectrepo;
+package resources;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,13 +14,13 @@ public class baseclass {
     public WebDriver driver;
     public WebDriver initializeDriver() throws IOException {
         Properties prop = new Properties();
-        FileInputStream file = new FileInputStream("A:\\Learn Automation\\Sample Automation Project\\src\\main\\java\\Objectrepo\\browserdata.properties");
+        FileInputStream file = new FileInputStream("A:\\Learn Automation\\Sample Automation Project\\src\\main\\java\\resources\\browserdata.properties");
         prop.load(file);
-      String browserName =  prop.getProperty("browser");
+        String browserName =  prop.getProperty("browser");
 
 
 if(browserName.equals("chrome")){
-    //excute chrome browser
+    //excute Chrome browser
     System.setProperty("webdriver.chrome.driver","A:\\Learn Automation\\Sample Automation Project\\chromedriver.exe");
     driver = new ChromeDriver();
 

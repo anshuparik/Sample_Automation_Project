@@ -16,6 +16,8 @@ public Objofelementspage(WebDriver driver) {
     By Submit = By.id("submit");
     By homecheckbox = By.xpath("//span[@class='rct-checkbox']");
 
+    By name = By.xpath("//p[@id='name']");
+
 
     public WebElement Fullname() {
        return driver.findElement(Fullname);
@@ -38,4 +40,7 @@ public Objofelementspage(WebDriver driver) {
     public WebElement homecheckbox(){
       return  driver.findElement(homecheckbox);
     }
-}
+
+    public WebElement name(){
+      return  driver.findElement(name);}
+    }
