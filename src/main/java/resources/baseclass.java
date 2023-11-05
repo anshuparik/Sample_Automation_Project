@@ -1,10 +1,8 @@
 package resources;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -20,7 +18,7 @@ public class baseclass {
         String browserName =  prop.getProperty("browser");
 
 if(browserName.equals("chrome")){
-    //excute Chrome browser
+    //execute Chrome browser if in properties file browser is chrome
     System.setProperty("webdriver.chrome.driver","A:\\Learn Automation\\Sample Automation Project\\chromedriver.exe");
     driver = new ChromeDriver();
 
@@ -33,7 +31,7 @@ if(browserName.equals("chrome")){
     System.out.println("dummyintenetexplorer");
 }
   driver.manage().window().maximize();
-  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);;
+  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   return driver;
 }
 
