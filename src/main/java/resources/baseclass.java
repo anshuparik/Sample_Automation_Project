@@ -1,5 +1,6 @@
 package resources;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,7 +18,6 @@ public class baseclass {
         FileInputStream file = new FileInputStream("A:\\Learn Automation\\Sample Automation Project\\src\\main\\java\\resources\\browserdata.properties");
         prop.load(file);
         String browserName =  prop.getProperty("browser");
-
 
 if(browserName.equals("chrome")){
     //excute Chrome browser

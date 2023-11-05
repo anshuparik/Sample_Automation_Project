@@ -2,23 +2,23 @@ package SampleSeleniumProject;
 
 import Objectrepo.ObjofFormspage;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import resources.baseclass;
 
-public class Forms {
+import java.io.IOException;
+
+public class Forms extends baseclass {
     @Test
-    public void practice_form() {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void practice_form() throws IOException {
+        driver= initializeDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.get("https://demoqa.com/automation-practice-form");
         ObjofFormspage myelementsofFormspage = new ObjofFormspage(driver);
         myelementsofFormspage.firstname().sendKeys("arvind");
         myelementsofFormspage.lastname().sendKeys("pareek");
         myelementsofFormspage.Email().sendKeys("abc@gmai.com");
-        myelementsofFormspage.gender().click();
+      //myelementsofFormspage.gender().click();
         WebElement mobileno = myelementsofFormspage.mobileno();
         js.executeScript("arguments[0].scrollIntoView();", mobileno);
         myelementsofFormspage.mobileno().sendKeys("1234567890");

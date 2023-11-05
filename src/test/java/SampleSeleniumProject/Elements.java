@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class Elements extends baseclass {
+    //Used Java inheritance concept here
     @Test
     public void Textbox() throws IOException {
         driver=initializeDriver();
