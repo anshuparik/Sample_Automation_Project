@@ -1,6 +1,8 @@
 package SampleSeleniumProject;
 
 import Objectrepo.ObjofFormspage;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -8,7 +10,9 @@ import resources.baseclass;
 
 import java.io.IOException;
 
-public class Forms extends baseclass {
+public class forms extends baseclass {
+
+    public static Logger log = LogManager.getLogger(forms.class.getName());
     @Test
     public void practice_form() throws IOException {
         driver= initializeDriver();

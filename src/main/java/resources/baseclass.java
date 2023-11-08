@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class baseclass {
     //invoking driver using single method
-    public WebDriver driver;
+    public static WebDriver driver;
     public WebDriver initializeDriver() throws IOException {
         Properties prop = new Properties();
         FileInputStream file = new FileInputStream("A:\\Learn Automation\\Sample Automation Project\\src\\main\\java\\resources\\browserdata.properties");
