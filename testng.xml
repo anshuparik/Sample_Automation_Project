@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite">
+    <listeners>
+        <listener class-name="SampleSeleniumProject.listeners"/>
+    </listeners>
     <test verbose="2" preserve-order="true" name="A:/Learn Automation/Sample Automation Project">
-        <classes>
-            <class name="SampleSeleniumProject.elements"><methods>
-            <include name="Textbox"/>
-                <include name="Checkbox"/></methods>
-        </class>
-            <class name="SampleSeleniumProject.forms"><methods>
-            <include name="practice_form"/></methods>
-        </class></classes></test></suite>
+        <classes><class name="SampleSeleniumProject.elements"><methods><include name="Textbox"/>
+            <include name="Checkbox"/></methods></class>
+            <class name="SampleSeleniumProject.forms">
+            <methods><include name="practice_form"/></methods>
+            </class></classes></test></suite>

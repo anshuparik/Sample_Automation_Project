@@ -1,8 +1,13 @@
 package resources;
 
+import org.apache.logging.log4j.core.util.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -33,6 +38,11 @@ if(browserName.equals("chrome")){
   driver.manage().window().maximize();
   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   return driver;
+}
+
+public void getScreenshot(String result) throws IOException {
+  File Src =  ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    FileUtils.copyFile(Src, new File("A://Learn Automation//myscreenshot//+result+photo.png"));
 }
 
     }
