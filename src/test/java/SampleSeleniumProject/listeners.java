@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class listeners implements ITestListener {
 
-  baseclass mybase =  new baseclass();
+    baseclass mybase = new baseclass();
 
     public void onTestFailure(ITestResult result) {
         try {

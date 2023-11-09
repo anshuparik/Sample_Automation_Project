@@ -1,11 +1,11 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofelementspage;
-import org.testng.Assert;
-import resources.baseclass;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import resources.baseclass;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ public class elements extends baseclass {
     //Used Java inheritance concept here
     @Test
     public void Textbox() throws IOException {
-        driver=initializeDriver();
+        driver = initializeDriver();
         driver.get("https://demoqa.com/text-box");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Objofelementspage myobjofelement = new Objofelementspage(driver);
@@ -26,9 +26,10 @@ public class elements extends baseclass {
         js.executeScript("arguments[0].scrollIntoView();", myelement);
         myobjofelement.Submit().click();
         //Validating actual vs expected text using assert method
-        Assert.assertEquals(myobjofelement.name().getText(),"Name:arvind");
+        Assert.assertEquals(myobjofelement.name().getText(), "Name:arvind");
         driver.quit();
     }
+
     @Test
     public void Checkbox() throws IOException {
         driver = initializeDriver();

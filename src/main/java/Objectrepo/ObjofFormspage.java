@@ -8,12 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 //Using Page Factory Annotations
 public class ObjofFormspage {
     WebDriver driver;
-
-    public ObjofFormspage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(xpath = "//input[@id='firstName']")
     WebElement firstname;
     @FindBy(xpath = "//input[@id='lastName']")
@@ -26,6 +20,10 @@ public class ObjofFormspage {
     WebElement mobileno;
     @FindBy(xpath = "//textarea[@placeholder='Current Address']")
     WebElement currentaddress;
+    public ObjofFormspage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public WebElement firstname() {
         return firstname;
