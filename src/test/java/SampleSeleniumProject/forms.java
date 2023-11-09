@@ -16,8 +16,10 @@ public class forms extends baseclass {
     @Test
     public void practice_form() throws IOException {
         driver= initializeDriver();
+        log.info("driver is initialized");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.get("https://demoqa.com/automation-practice-form");
+        log.info("moved to url");
         ObjofFormspage myelementsofFormspage = new ObjofFormspage(driver);
         myelementsofFormspage.firstname().sendKeys("arvind");
         log.info("name created");
