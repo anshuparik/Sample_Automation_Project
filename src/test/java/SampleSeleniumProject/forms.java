@@ -28,7 +28,7 @@ public class forms extends baseclass {
         log.info("last name created");
         myelementsofFormspage.Email().sendKeys("abc@gmai.com");
         log.error("email created");
-        //myelementsofFormspage.gender().click();
+        myelementsofFormspage.gender().click();
         WebElement mobileno = myelementsofFormspage.mobileno();
         js.executeScript("arguments[0].scrollIntoView();", mobileno);
         myelementsofFormspage.mobileno().sendKeys("1234567890");
