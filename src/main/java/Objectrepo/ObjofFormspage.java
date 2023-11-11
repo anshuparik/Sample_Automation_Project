@@ -20,6 +20,7 @@ public class ObjofFormspage {
     WebElement mobileno;
     @FindBy(xpath = "//textarea[@placeholder='Current Address']")
     WebElement currentaddress;
+
     public ObjofFormspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -3,6 +3,7 @@
 <suite name="All Test Suite">
     <listeners>
         <listener class-name="SampleSeleniumProject.listeners"/>
+        <listener class-name="resources.ExtentReporterNG"/>
     </listeners>
     <test verbose="2" preserve-order="true" name="A:/Learn Automation/Sample Automation Project">
         <classes>
