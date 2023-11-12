@@ -16,15 +16,16 @@ import java.util.Set;
 
 public class alertsWindows extends baseclass {
     public static Logger log = LogManager.getLogger(forms.class.getName());
+    
 
     @Test
     public void browser_windows() throws IOException {
         driver = initializeDriver();
-        log.info("driver intlized");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        log.info("driver initialized");
         driver.get("https://demoqa.com/browser-windows");
         log.info("move to url");
-        ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         myelementsofbrowserwindow.newtab().click();
         // Wait for the new tab to be present
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
@@ -68,5 +69,20 @@ public class alertsWindows extends baseclass {
 
     }
 
+    @Test
+    public void alerts() throws IOException {
+        driver = initializeDriver();
+        ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        driver.get("https://demoqa.com/alerts");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        myelementsofbrowserwindow.alertbutton().click(); // Locate the button that triggers the alert
+        wait.until(ExpectedConditions.alertIsPresent());
+        String text = driver.switchTo().alert().getText();
+        Assert.assertEquals(text, "You clicked a button");
+        driver.switchTo().alert().accept();
+        driver.quit();
+
+
+    }
 
 }
