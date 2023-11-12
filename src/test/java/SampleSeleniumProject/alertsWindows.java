@@ -3,6 +3,9 @@ package SampleSeleniumProject;
 import Objectrepo.ObjofalertsWindowsPage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -74,12 +77,30 @@ public class alertsWindows extends baseclass {
         driver = initializeDriver();
         ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
         driver.get("https://demoqa.com/alerts");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        myelementsofbrowserwindow.alertbutton().click(); // Locate the button that triggers the alert
+        myelementsofbrowserwindow.getAlertbutton().click(); // Locate the button that triggers the alert
         wait.until(ExpectedConditions.alertIsPresent());
         String text = driver.switchTo().alert().getText();
         Assert.assertEquals(text, "You clicked a button");
         driver.switchTo().alert().accept();
+        myelementsofbrowserwindow.getTimealertbutton().click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        String text1 =driver.switchTo().alert().getText();
+        Assert.assertEquals(text1,"This alert appeared after 5 seconds");
+        driver.switchTo().alert().dismiss();
+        myelementsofbrowserwindow.getConfimbutton().click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+        String text3 = driver.findElement(By.xpath("//span[@id='confirmResult']")).getText();
+        Assert.assertEquals(text3,"You selected Ok");
+        js.executeScript("arguments[0].scrollIntoView();", myelementsofbrowserwindow.getPromtbutton());
+        myelementsofbrowserwindow.getPromtbutton().click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().sendKeys("arvind pareek");
+        driver.switchTo().alert().accept();
+        String text4 =driver.findElement(By.xpath("//span[@id='promptResult']")).getText();
+        Assert.assertEquals(text4,"You entered arvind pareek");
         driver.quit();
 
 

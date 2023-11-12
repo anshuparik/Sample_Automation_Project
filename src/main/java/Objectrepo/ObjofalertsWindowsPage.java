@@ -23,10 +23,10 @@ public class ObjofalertsWindowsPage {
 
     @FindBy(xpath = "//button[@id='timerAlertButton']")
     WebElement timealertbutton;
-    @FindBy(xpath = "button[@id='confirmButton']")
+    @FindBy(xpath = "//button[@id='confirmButton']")
     WebElement confimbutton;
 
-    @FindBy(xpath = "button[@id='promtButton")
+    @FindBy(xpath = "//button[@id='promtButton']")
     WebElement promtbutton;
 
     public ObjofalertsWindowsPage(WebDriver driver) {
@@ -51,7 +51,7 @@ public class ObjofalertsWindowsPage {
         return msgofnewtab;
     }
 
-    public WebElement alertbutton() {
+    public WebElement getAlertbutton() {
         return alertbutton;
     }
 
