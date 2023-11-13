@@ -23,12 +23,48 @@ public class ObjofalertsWindowsPage {
     WebElement confimbutton;
     @FindBy(xpath = "//button[@id='promtButton']")
     WebElement promtbutton;
-
+    @FindBy(xpath = "//button[@id='showSmallModal']")
+    WebElement smallmodal;
+    @FindBy(xpath = "//button[@id='closeSmallModal']")
+    WebElement closesmallmodal;
+    @FindBy(xpath = "//div[@class='modal-body']")
+    WebElement smallmodalbody;
+    @FindBy(xpath = "//button[@id='showLargeModal']")
+    WebElement largemodal;
+    @FindBy(xpath = "//button[@id='closeLargeModal']")
+    WebElement closelargemodal;
+    @FindBy(xpath = "//div[@class='modal-body']")
+    WebElement largemodalbody;
 
     public ObjofalertsWindowsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public WebElement getLargemodalbody() {
+        return largemodalbody;
+    }
+
+    public WebElement getCloselargemodal() {
+        return closelargemodal;
+    }
+
+    public WebElement getLargemodal() {
+        return largemodal;
+    }
+
+    public WebElement getSmallmodal() {
+        return smallmodal;
+    }
+
+    public WebElement getClosesmallmodal() {
+        return closesmallmodal;
+    }
+
+    public WebElement getSmallmodalbody() {
+        return smallmodalbody;
+    }
+
 
     public WebElement newtab() {
         return newtab;
@@ -61,7 +97,6 @@ public class ObjofalertsWindowsPage {
     public WebElement getPromtbutton() {
         return promtbutton;
     }
-
 
 
 }

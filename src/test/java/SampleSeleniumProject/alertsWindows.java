@@ -55,6 +55,7 @@ public class alertsWindows extends baseclass {
         driver.close();
         driver.switchTo().window(parentid);
         //code for new window message
+        //need to fix
        /* myelementsofbrowserwindow.Newwindowmessage().click();
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
         ids = driver.getWindowHandles();
@@ -80,19 +81,19 @@ public class alertsWindows extends baseclass {
         driver.get("https://demoqa.com/alerts");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //code for alertbutton
+        //code for alert-button
         myelementsofbrowserwindow.getAlertbutton().click(); // Locate the button that triggers the alert
         wait.until(ExpectedConditions.alertIsPresent());
         String text = driver.switchTo().alert().getText();
         Assert.assertEquals(text, "You clicked a button");
         driver.switchTo().alert().accept();
-        //code for time alertbutton
+        //code for time alert-button
         myelementsofbrowserwindow.getTimealertbutton().click();
         wait.until(ExpectedConditions.alertIsPresent());
         String text1 = driver.switchTo().alert().getText();
         Assert.assertEquals(text1, "This alert appeared after 5 seconds");
         driver.switchTo().alert().dismiss();
-        //code for confirmationbutton
+        //code for confirmation button
         myelementsofbrowserwindow.getConfimbutton().click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
@@ -107,29 +108,58 @@ public class alertsWindows extends baseclass {
         Assert.assertEquals(text4, "You entered arvind pareek");
         driver.quit();
 
-
     }
 
     @Test
     public void frames() throws IOException {
         driver = initializeDriver();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
         driver.get("https://demoqa.com/frames");
         List<WebElement> iframeElements = driver.findElements(By.tagName("iframe"));//just to know no of frames not required in this test.
         System.out.println("Total number of iframes are " + iframeElements.size());
-       // driver.switchTo().frame(2); //this can also we use for index of frame
+        // driver.switchTo().frame(2); //this can also we use for index of frame
         driver.switchTo().frame("frame1");
         String text = driver.findElement(By.xpath("//h1[@id='sampleHeading']")).getText();
-        Assert.assertEquals(text,"This is a sample page");
+        Assert.assertEquals(text, "This is a sample page");
         System.out.println(text);
-        driver.switchTo().defaultContent();
+        driver.switchTo().defaultContent(); //move back to parent frame
         driver.switchTo().frame("frame2");
-       String text2 = driver.findElement(By.id("sampleHeading")).getText();
-       Assert.assertEquals(text2,"This is a sample page");
-        System.out.println(text2);
-
+        String text2 = driver.findElement(By.id("sampleHeading")).getText();
+        Assert.assertEquals(text2, "This is a sample page");
+        driver.quit();
 
     }
 
+    @Test
+    public void nestedframes() throws IOException {
+        driver = initializeDriver();
+        ObjofalertsWindowsPage elementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        driver.get("https://demoqa.com/nestedframes");
+        driver.switchTo().frame("frame1");
+        driver.quit();
+        //need to fix
+
+    }
+
+    @Test
+    public void modal_dialogs() throws IOException, InterruptedException {
+        driver = initializeDriver();
+        ObjofalertsWindowsPage elementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        driver.get("https://demoqa.com/modal-dialogs");
+        //code for small model
+        elementsofbrowserwindow.getSmallmodal().click();
+        String text = elementsofbrowserwindow.getSmallmodalbody().getText();
+        Assert.assertEquals(text, "This is a small modal. It has very less content");
+        elementsofbrowserwindow.getClosesmallmodal().click();
+        //Code for large modal
+        elementsofbrowserwindow.getLargemodal().click();
+        String text1 = elementsofbrowserwindow.getLargemodalbody().getText();
+        //matching only partial text
+        // Assert.assertEquals(text1.contains("it to make a type specimen book"),true);
+        Assert.assertTrue(text1.contains("it to make a type specimen book"));
+        elementsofbrowserwindow.getCloselargemodal().click();
+        driver.quit();
+
+
+    }
 }
