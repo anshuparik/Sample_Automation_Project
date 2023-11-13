@@ -63,8 +63,8 @@ public class alertsWindows extends baseclass {
         parentid = its.next();
         childid = its.next();
         driver.switchTo().window(childid);
-       WebElement pagetext = driver.findElement(By.xpath("//body"));
-       String pg = pagetext.getText();
+       WebElement text = driver.findElement(By.xpath("//body"));
+       String pg = text.getText();
         Assert.assertEquals(pg,"Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.");
       //  System.out.println(driver.findElement(By.xpath("//body")));
         driver.close();
@@ -113,7 +113,6 @@ public class alertsWindows extends baseclass {
     @Test
     public void frames() throws IOException {
         driver = initializeDriver();
-        ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
         driver.get("https://demoqa.com/frames");
         List<WebElement> iframeElements = driver.findElements(By.tagName("iframe"));//just to know no of frames not required in this test.
         System.out.println("Total number of iframes are " + iframeElements.size());
@@ -133,7 +132,6 @@ public class alertsWindows extends baseclass {
     @Test
     public void nestedframes() throws IOException {
         driver = initializeDriver();
-        ObjofalertsWindowsPage elementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
         driver.get("https://demoqa.com/nestedframes");
         driver.switchTo().frame("frame1");
         driver.quit();
@@ -142,7 +140,7 @@ public class alertsWindows extends baseclass {
     }
 
     @Test
-    public void modal_dialogs() throws IOException, InterruptedException {
+    public void modal_dialogs() throws IOException {
         driver = initializeDriver();
         ObjofalertsWindowsPage elementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
         driver.get("https://demoqa.com/modal-dialogs");
