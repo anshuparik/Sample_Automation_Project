@@ -15,11 +15,12 @@ import resources.baseclass;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class alertsWindows extends baseclass {
     public static Logger log = LogManager.getLogger(forms.class.getName());
-    
+
 
     @Test
     public void browser_windows() throws IOException {
@@ -79,29 +80,54 @@ public class alertsWindows extends baseclass {
         driver.get("https://demoqa.com/alerts");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //code for alertbutton
         myelementsofbrowserwindow.getAlertbutton().click(); // Locate the button that triggers the alert
         wait.until(ExpectedConditions.alertIsPresent());
         String text = driver.switchTo().alert().getText();
         Assert.assertEquals(text, "You clicked a button");
         driver.switchTo().alert().accept();
+        //code for time alertbutton
         myelementsofbrowserwindow.getTimealertbutton().click();
         wait.until(ExpectedConditions.alertIsPresent());
-        String text1 =driver.switchTo().alert().getText();
-        Assert.assertEquals(text1,"This alert appeared after 5 seconds");
+        String text1 = driver.switchTo().alert().getText();
+        Assert.assertEquals(text1, "This alert appeared after 5 seconds");
         driver.switchTo().alert().dismiss();
+        //code for confirmationbutton
         myelementsofbrowserwindow.getConfimbutton().click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
         String text3 = driver.findElement(By.xpath("//span[@id='confirmResult']")).getText();
-        Assert.assertEquals(text3,"You selected Ok");
+        Assert.assertEquals(text3, "You selected Ok");
         js.executeScript("arguments[0].scrollIntoView();", myelementsofbrowserwindow.getPromtbutton());
         myelementsofbrowserwindow.getPromtbutton().click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().sendKeys("arvind pareek");
         driver.switchTo().alert().accept();
-        String text4 =driver.findElement(By.xpath("//span[@id='promptResult']")).getText();
-        Assert.assertEquals(text4,"You entered arvind pareek");
+        String text4 = driver.findElement(By.xpath("//span[@id='promptResult']")).getText();
+        Assert.assertEquals(text4, "You entered arvind pareek");
         driver.quit();
+
+
+    }
+
+    @Test
+    public void frames() throws IOException {
+        driver = initializeDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        ObjofalertsWindowsPage myelementsofbrowserwindow = new ObjofalertsWindowsPage(driver);
+        driver.get("https://demoqa.com/frames");
+        List<WebElement> iframeElements = driver.findElements(By.tagName("iframe"));//just to know no of frames not required in this test.
+        System.out.println("Total number of iframes are " + iframeElements.size());
+       // driver.switchTo().frame(2); //this can also we use for index of frame
+        driver.switchTo().frame("frame1");
+        String text = driver.findElement(By.xpath("//h1[@id='sampleHeading']")).getText();
+        Assert.assertEquals(text,"This is a sample page");
+        System.out.println(text);
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("frame2");
+       String text2 = driver.findElement(By.id("sampleHeading")).getText();
+       Assert.assertEquals(text2,"This is a sample page");
+        System.out.println(text2);
 
 
     }

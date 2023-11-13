@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ObjofalertsWindowsPage {
     WebDriver driver;
-
-
     @FindBy(xpath = "//button[@id='tabButton']")
     WebElement newtab;
     @FindBy(xpath = "//button[@id='windowButton']")
@@ -17,23 +15,20 @@ public class ObjofalertsWindowsPage {
     WebElement newwindowmessage;
     @FindBy(xpath = "//h1[@id='sampleHeading']")
     WebElement msgofnewtab;
-
     @FindBy(xpath = "//button[@id='alertButton']")
     WebElement alertbutton;
-
     @FindBy(xpath = "//button[@id='timerAlertButton']")
     WebElement timealertbutton;
     @FindBy(xpath = "//button[@id='confirmButton']")
     WebElement confimbutton;
-
     @FindBy(xpath = "//button[@id='promtButton']")
     WebElement promtbutton;
+
 
     public ObjofalertsWindowsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
 
     public WebElement newtab() {
         return newtab;
@@ -66,6 +61,8 @@ public class ObjofalertsWindowsPage {
     public WebElement getPromtbutton() {
         return promtbutton;
     }
+
+
 
 }
 
