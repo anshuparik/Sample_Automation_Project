@@ -23,10 +23,17 @@ public class Objofwidgetspage {
     @FindBy(id = "autoCompleteSingleInput")
     WebElement selectsingle;
 
+    @FindBy(xpath = "//input[@type='range']")
+    WebElement slider;
+
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getSlider() {
+        return slider;
     }
 
     public WebElement getSelectsingle() {

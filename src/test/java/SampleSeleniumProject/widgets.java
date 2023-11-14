@@ -1,11 +1,17 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofwidgetspage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
+import javax.swing.plaf.basic.BasicSliderUI;
 import java.io.IOException;
+import java.sql.Driver;
 import java.util.Objects;
 
 public class widgets extends baseclass {
@@ -45,6 +51,19 @@ public class widgets extends baseclass {
         myobjofwidgetpage.getSelectsingle().sendKeys("re");
         myobjofwidgetpage.getSelectsingle().sendKeys(Keys.ENTER);
 
+
+    }
+
+    @Test
+    public void slider() throws IOException {
+        driver = initializeDriver();
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        driver.get("https://demoqa.com/slider");
+        //Use the ActionChains class to move the slider
+
+        Actions SliderAction = new Actions(driver);
+      // SliderAction.dragAndDropBy(myobjofwidgetpage.getSlider(), ).perform();
+       SliderAction.dragAndDrop(myobjofwidgetpage.getSlider(), driver.findElement(By.xpath("//input[@value='50']"))).perform();
 
     }
 
