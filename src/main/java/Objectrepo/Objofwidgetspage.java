@@ -17,16 +17,16 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//div[@id='section3Heading']")
     WebElement section3;
 
-    @FindBy(id = "autoCompleteMultipleInput")    WebElement selectmultiple;
+    @FindBy(id = "autoCompleteMultipleInput")
+    WebElement selectmultiple;
 
     @FindBy(id = "autoCompleteSingleInput")
     WebElement selectsingle;
 
 
-
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public WebElement getSelectsingle() {

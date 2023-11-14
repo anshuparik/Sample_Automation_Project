@@ -1,7 +1,6 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofwidgetspage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 import resources.baseclass;
@@ -17,7 +16,7 @@ public class widgets extends baseclass {
         driver = initializeDriver();
         Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
         driver.get("https://demoqa.com/accordian");
-       // myobjofwidgetpage.getSection1().click();
+        // myobjofwidgetpage.getSection1().click();
         // Verify the state of the accordion after the click action
         String accordian1 = myobjofwidgetpage.getSection2().getAttribute("class");
         System.out.println(accordian1);
@@ -32,7 +31,7 @@ public class widgets extends baseclass {
     }
 
     @Test
-    public void auto_complete() throws IOException, InterruptedException {
+    public void auto_complete() throws IOException {
         driver = initializeDriver();
         Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
         driver.get("https://demoqa.com/auto-complete");
