@@ -2,7 +2,9 @@ package SampleSeleniumProject;
 
 import Objectrepo.Objofwidgetspage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -11,6 +13,7 @@ import resources.baseclass;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Set;
 
 public class widgets extends baseclass {
 
@@ -81,6 +84,47 @@ public class widgets extends baseclass {
         String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-valuenow");
         Assert.assertEquals(text, "21");
         driver.quit();
+    }
+
+    @Test
+    public void tabs() throws IOException {
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/tabs");
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        myobjofwidgetpage.getWhat().click();
+        String text = driver.findElement(By.xpath("//p[@class='mt-3']")).getText();
+        Assert.assertTrue(text.contains("nly five centuries"));
+        myobjofwidgetpage.getUse().click();
+        driver.quit();
+        //need to fix
+
+    }
+
+    @Test
+    public void tool_tips() throws IOException, InterruptedException {
+        driver =initializeDriver();
+        driver.get("https://demoqa.com/tool-tips");
+        JavascriptExecutor js =  (JavascriptExecutor) driver ;
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(myobjofwidgetpage.getTooltipbutton()).perform();
+        String text =myobjofwidgetpage.getTooltipbutton().getText();
+        Assert.assertEquals(text,"Hover me to see");
+        Thread.sleep(3000);
+        actions.moveToElement(myobjofwidgetpage.getTooltiptext()).perform(); //need to fix(validation)
+        Thread.sleep(2000);
+
+
+        js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getContrary());
+        actions.moveToElement(myobjofwidgetpage.getContrary());
+        Assert.assertEquals(myobjofwidgetpage.getContrary().getText(),"Contrary");
+
+        js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getTooltipofnumbers());
+        actions.moveToElement(myobjofwidgetpage.getTooltipofnumbers());
+        Assert.assertEquals(myobjofwidgetpage.getTooltipofnumbers().getText(),"1.10.32");
+        driver.quit();
+
     }
 
 }

@@ -29,14 +29,62 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//button[@id='startStopButton']")
     WebElement startnstop;
 
+    @FindBy(xpath = "//a[@id='demo-tab-what']")
+    WebElement what;
+
+    @FindBy(xpath = "//a[@id='demo-tab-origin']")
+    WebElement origin;
+
+    @FindBy(xpath = "//a[@id='demo-tab-use']")
+    WebElement use;
+
+    @FindBy(xpath = "//button[@id='toolTipButton']")
+    WebElement tooltipbutton;
+
+    @FindBy(xpath = "//input[@placeholder='Hover me to see']")
+    WebElement tooltiptext;
+
+    @FindBy(xpath = "//a[text()='Contrary']")
+    WebElement contrary;
+
+    @FindBy(xpath = "//a[text()='1.10.32']")
+    WebElement tooltipofnumbers;
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getTooltipofnumbers() {
+        return tooltipofnumbers;
+    }
+
+    public WebElement getContrary() {
+        return contrary;
+    }
+
+    public WebElement getTooltiptext() {
+        return tooltiptext;
+    }
+
+    public WebElement getTooltipbutton() {
+        return tooltipbutton;
+    }
+
     public WebElement getStartnstop() {
         return startnstop;
+    }
+
+    public WebElement getOrigin() {
+        return origin;
+    }
+
+    public WebElement getUse() {
+        return use;
+    }
+
+    public WebElement getWhat() {
+        return what;
     }
 
     public WebElement getSlider() {
