@@ -26,10 +26,17 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//input[@type='range']")
     WebElement slider;
 
+    @FindBy(xpath = "//button[@id='startStopButton']")
+    WebElement startnstop;
+
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getStartnstop() {
+        return startnstop;
     }
 
     public WebElement getSlider() {

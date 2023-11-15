@@ -1,8 +1,11 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofwidgetspage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
@@ -61,8 +64,23 @@ public class widgets extends baseclass {
         Actions SliderAction = new Actions(driver);
         SliderAction.dragAndDropBy(myobjofwidgetpage.getSlider(), 70, 0).release().perform();
         //SliderAction.clickAndHold(myobjofwidgetpage.getSlider()).moveByOffset(70, 0).release().perform();
+        String text = driver.findElement(By.xpath("//input[@id='sliderValue']")).getAttribute("value");
+        Assert.assertEquals(text,"66");
         driver.quit();
 
+    }
+
+    @Test
+    public void progress_bar() throws IOException, InterruptedException {
+        driver = initializeDriver();
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        driver.get("https://demoqa.com/progress-bar");
+        myobjofwidgetpage.getStartnstop().click();
+        Thread.sleep(2000);
+        myobjofwidgetpage.getStartnstop().click();
+        String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-valuenow");
+        Assert.assertEquals(text, "21");
+        driver.quit();
     }
 
 }
