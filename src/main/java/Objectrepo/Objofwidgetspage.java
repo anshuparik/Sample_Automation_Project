@@ -65,7 +65,7 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//a[text()='Main Item 3']")
     WebElement mainitem3;
 
-    @FindBy(xpath = "//*[@id=\"withOptGroup\"]/div/div[2]/div")
+    //@FindBy(xpath = "//*[@id=\"withOptGroup\"]/div/div[2]/div")
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
