@@ -4,16 +4,13 @@ import Objectrepo.Objofwidgetspage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Set;
 
 public class widgets extends baseclass {
 
@@ -68,7 +65,7 @@ public class widgets extends baseclass {
         SliderAction.dragAndDropBy(myobjofwidgetpage.getSlider(), 70, 0).release().perform();
         //SliderAction.clickAndHold(myobjofwidgetpage.getSlider()).moveByOffset(70, 0).release().perform();
         String text = driver.findElement(By.xpath("//input[@id='sliderValue']")).getAttribute("value");
-        Assert.assertEquals(text,"66");
+        Assert.assertEquals(text, "66");
         driver.quit();
 
     }
@@ -102,29 +99,62 @@ public class widgets extends baseclass {
 
     @Test
     public void tool_tips() throws IOException, InterruptedException {
-        driver =initializeDriver();
+        driver = initializeDriver();
         driver.get("https://demoqa.com/tool-tips");
-        JavascriptExecutor js =  (JavascriptExecutor) driver ;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
         Actions actions = new Actions(driver);
 
         actions.moveToElement(myobjofwidgetpage.getTooltipbutton()).perform();
-        String text =myobjofwidgetpage.getTooltipbutton().getText();
-        Assert.assertEquals(text,"Hover me to see");
+        String text = myobjofwidgetpage.getTooltipbutton().getText();
+        Assert.assertEquals(text, "Hover me to see");
         Thread.sleep(3000);
         actions.moveToElement(myobjofwidgetpage.getTooltiptext()).perform(); //need to fix(validation)
         Thread.sleep(2000);
 
 
-        js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getContrary());
+        js.executeScript("arguments[0].scrollIntoView();", myobjofwidgetpage.getContrary());
         actions.moveToElement(myobjofwidgetpage.getContrary());
-        Assert.assertEquals(myobjofwidgetpage.getContrary().getText(),"Contrary");
+        Assert.assertEquals(myobjofwidgetpage.getContrary().getText(), "Contrary");
 
-        js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getTooltipofnumbers());
+        js.executeScript("arguments[0].scrollIntoView();", myobjofwidgetpage.getTooltipofnumbers());
         actions.moveToElement(myobjofwidgetpage.getTooltipofnumbers());
-        Assert.assertEquals(myobjofwidgetpage.getTooltipofnumbers().getText(),"1.10.32");
+        Assert.assertEquals(myobjofwidgetpage.getTooltipofnumbers().getText(), "1.10.32");
         driver.quit();
 
     }
 
+    @Test
+    public void menu() throws IOException, InterruptedException {
+
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/menu#");
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        //code for main item1
+        myobjofwidgetpage.getMainitem1().click();
+        Actions actions = new Actions(driver);
+        //code for main item2
+        actions.moveToElement(myobjofwidgetpage.getMainitem2()).click().perform();
+        Thread.sleep(2000);
+        myobjofwidgetpage.getMainitem2().sendKeys(Keys.ARROW_DOWN);
+        Thread.sleep(2000);
+        myobjofwidgetpage.getMainitem2().sendKeys(Keys.ENTER);
+        Thread.sleep(1000);
+        actions.moveToElement(myobjofwidgetpage.getMainitem2()).click().perform();
+        // actions.moveToElement(myobjofwidgetpage.getSubsublist()).click().perform();
+        Thread.sleep(2000);
+        actions.moveToElement(myobjofwidgetpage.getSubsublist()).click().perform();
+        actions.moveToElement(myobjofwidgetpage.getSubsubitem1()).click().perform();
+        myobjofwidgetpage.getSubsubitem1().sendKeys(Keys.ARROW_DOWN);
+        //code for mainitem 3
+        myobjofwidgetpage.getMainitem3().click();
+        driver.quit();
+
+    }
+
+    @Test
+    public void select_menu() throws IOException {
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/select-menu");
+    }
 }

@@ -50,9 +50,46 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//a[text()='1.10.32']")
     WebElement tooltipofnumbers;
 
+    @FindBy(xpath = "//a[text()='Main Item 1']")
+    WebElement mainitem1;
+
+    @FindBy(xpath = "//a[text()='Main Item 2']")
+    WebElement mainitem2;
+
+    @FindBy(xpath = "//a[text()='SUB SUB LIST »']")
+    WebElement subsublist;
+
+    @FindBy(xpath = "//a[text()='Sub Sub Item 1']")
+    WebElement subsubitem1;
+
+    @FindBy(xpath = "//a[text()='Main Item 3']")
+    WebElement mainitem3;
+
+    @FindBy(xpath = "//*[@id=\"withOptGroup\"]/div/div[2]/div")
+
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getMainitem3() {
+        return mainitem3;
+    }
+
+    public WebElement getSubsubitem1() {
+        return subsubitem1;
+    }
+
+    public WebElement getSubsublist() {
+        return subsublist;
+    }
+
+    public WebElement getMainitem2() {
+        return mainitem2;
+    }
+
+    public WebElement getMainitem1() {
+        return mainitem1;
     }
 
     public WebElement getTooltipofnumbers() {
