@@ -65,11 +65,53 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//a[text()='Main Item 3']")
     WebElement mainitem3;
 
-    //@FindBy(xpath = "//*[@id=\"withOptGroup\"]/div/div[2]/div")
+    @FindBy(xpath = "//div[@class=' css-1wy0on6']")
+    WebElement clickondropdown1;
+
+    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[1]")
+    WebElement clickonselectvalue;
+
+    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[1]")
+    WebElement selectone;
+
+    @FindBy(id = "oldSelectMenu")
+    WebElement oldstyleselectmenu;
+
+    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[2]")
+    WebElement multiselect;
+
+    @FindBy(xpath = "//option[@value='saab']")
+    WebElement Standardmultiselect;
+
+
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getStandardmultiselect() {
+        return Standardmultiselect;
+    }
+
+    public WebElement getMultiselect() {
+        return multiselect;
+    }
+
+    public WebElement getOldstyleselectmenu() {
+        return oldstyleselectmenu;
+    }
+
+    public WebElement getSelectone() {
+        return selectone;
+    }
+
+    public WebElement getClickonselectvalue() {
+        return clickonselectvalue;
+    }
+
+    public WebElement getClickondropdown1() {
+        return clickondropdown1;
     }
 
     public WebElement getMainitem3() {

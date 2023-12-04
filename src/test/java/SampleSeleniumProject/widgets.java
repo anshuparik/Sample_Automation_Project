@@ -156,5 +156,19 @@ public class widgets extends baseclass {
     public void select_menu() throws IOException {
         driver = initializeDriver();
         driver.get("https://demoqa.com/select-menu");
+        Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
+        myobjofwidgetpage.getClickondropdown1().click();
+        myobjofwidgetpage.getClickonselectvalue().click();
+        myobjofwidgetpage.getClickonselectvalue().sendKeys(Keys.ENTER);
+       // driver.findElement(By.id("react-select-2-option-2")).click();
+     //   myobjofwidgetpage.getClickonselectvalue().sendKeys("Group 2, option 1");
+       // myobjofwidgetpage.getClickonselectvalue().sendKeys(Keys.ENTER);
+        myobjofwidgetpage.getSelectone().click();
+       // myobjofwidgetpage.getSelectone().sendKeys("ms");
+       // myobjofwidgetpage.getSelectone().sendKeys(Keys.ENTER);
+
+
+
+
     }
 }
