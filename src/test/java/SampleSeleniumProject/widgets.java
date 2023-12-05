@@ -4,12 +4,15 @@ import Objectrepo.Objofwidgetspage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class widgets extends baseclass {
@@ -153,19 +156,45 @@ public class widgets extends baseclass {
     }
 
     @Test
-    public void select_menu() throws IOException {
+    public void select_menu() throws IOException, InterruptedException {
         driver = initializeDriver();
         driver.get("https://demoqa.com/select-menu");
         Objofwidgetspage myobjofwidgetpage = new Objofwidgetspage(driver);
-        myobjofwidgetpage.getClickondropdown1().click();
-        myobjofwidgetpage.getClickonselectvalue().click();
-        myobjofwidgetpage.getClickonselectvalue().sendKeys(Keys.ENTER);
-       // driver.findElement(By.id("react-select-2-option-2")).click();
-     //   myobjofwidgetpage.getClickonselectvalue().sendKeys("Group 2, option 1");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+      //  myobjofwidgetpage.getClickondropdown1().click();
+      //  myobjofwidgetpage.getClickonselectvalue().click();
+      //  Select myselect = new Select(myobjofwidgetpage.getClickonselectvalue());
+      //  List<WebElement> options = myselect.getOptions();
+      //  System.out.println(options);
+       // myselect.selectByVisibleText("Group 2, option 1");
        // myobjofwidgetpage.getClickonselectvalue().sendKeys(Keys.ENTER);
-        myobjofwidgetpage.getSelectone().click();
+       // driver.findElement(By.id("react-select-2-option-2")).click();
+        //Thread.sleep(3000);
+       // myobjofwidgetpage.getClickonselectvalue().sendKeys("Group 2, option 1");
+       // myobjofwidgetpage.getClickonselectvalue().sendKeys(Keys.ENTER);
+      //  myobjofwidgetpage.getSelectone().click();
        // myobjofwidgetpage.getSelectone().sendKeys("ms");
        // myobjofwidgetpage.getSelectone().sendKeys(Keys.ENTER);
+        js.executeScript("arguments[0].scrollIntoView();", myobjofwidgetpage.getOldstyleselectmenu());
+        myobjofwidgetpage.getOldstyleselectmenu().click();
+        Select myselect = new Select(myobjofwidgetpage.getOldstyleselectmenu());
+        myselect.selectByVisibleText("Aqua");
+        myobjofwidgetpage.getOldstyleselectmenu().click();
+       // Thread.sleep(2000);
+        /*js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getMultiselect());
+        myobjofwidgetpage.getMultiselect().click();
+        myobjofwidgetpage.getMultiselect().sendKeys("Re");
+        myobjofwidgetpage.getMultiselect().sendKeys(Keys.ENTER);
+       // Select myselect1 = new Select(myobjofwidgetpage.getMultiselect());
+        //myselect1.selectByVisibleText("Red");*/
+        Thread.sleep(2000);
+        js.executeScript("arguments[0].scrollIntoView();",myobjofwidgetpage.getStandardmultiselect());
+        Select myselect2 = new Select(myobjofwidgetpage.getStandardmultiselect());
+        myselect2.selectByIndex(1);
+        myselect2.selectByIndex(2);
+        myselect2.deselectAll();
+        myselect2.selectByVisibleText("Audi");
+        myselect2.deselectByVisibleText("Audi");
 
 
 

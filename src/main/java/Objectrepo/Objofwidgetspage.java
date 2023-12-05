@@ -77,10 +77,10 @@ public class Objofwidgetspage {
     @FindBy(id = "oldSelectMenu")
     WebElement oldstyleselectmenu;
 
-    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[2]")
+    @FindBy(xpath = "(//div[@class=' css-2b097c-container'])[3]")
     WebElement multiselect;
 
-    @FindBy(xpath = "//option[@value='saab']")
+    @FindBy(id = "cars")
     WebElement Standardmultiselect;
 
 
