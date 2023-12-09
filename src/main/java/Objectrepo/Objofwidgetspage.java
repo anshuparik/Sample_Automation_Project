@@ -65,13 +65,13 @@ public class Objofwidgetspage {
     @FindBy(xpath = "//a[text()='Main Item 3']")
     WebElement mainitem3;
 
-    @FindBy(xpath = "//div[@class=' css-1wy0on6']")
+    @FindBy(xpath = "//div[text()='Select Option']")
     WebElement clickondropdown1;
 
-    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[1]")
+    @FindBy(id = "react-select-3-option-0-1")
     WebElement clickonselectvalue;
 
-    @FindBy(xpath = "(//div[@class=' css-1wa3eu0-placeholder'])[1]")
+    @FindBy(xpath = "//div[text()='Select Title']")
     WebElement selectone;
 
     @FindBy(id = "oldSelectMenu")
@@ -83,11 +83,24 @@ public class Objofwidgetspage {
     @FindBy(id = "cars")
     WebElement Standardmultiselect;
 
+    @FindBy(id = "react-select-4-option-1")
+    WebElement selectblue;
+
+    @FindBy(id = "react-select-4-option-2")
+    WebElement selectblack;
 
 
     public Objofwidgetspage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getSelectblack() {
+        return selectblack;
+    }
+
+    public WebElement getSelectblue() {
+        return selectblue;
     }
 
     public WebElement getStandardmultiselect() {
