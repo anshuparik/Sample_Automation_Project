@@ -79,7 +79,7 @@ public class widgets extends baseclass {
         myobjofwidgetpage.getStartnstop().click();
         Thread.sleep(2000);
         myobjofwidgetpage.getStartnstop().click();
-        String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-valuenow");
+        String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-value-now");
         Assert.assertEquals(text, "21");
         driver.quit();
     }
@@ -142,12 +142,12 @@ public class widgets extends baseclass {
         myobjofwidgetpage.getMainitem2().sendKeys(Keys.ENTER);
         Thread.sleep(1000);
         actions.moveToElement(myobjofwidgetpage.getMainitem2()).click().perform();
-        // actions.moveToElement(myobjofwidgetpage.getSubsublist()).click().perform();
+        // actions.moveToElement(myobjofwidgetpage.getSub-sublist()).click().perform();
         Thread.sleep(2000);
         actions.moveToElement(myobjofwidgetpage.getSubsublist()).click().perform();
         actions.moveToElement(myobjofwidgetpage.getSubsubitem1()).click().perform();
         myobjofwidgetpage.getSubsubitem1().sendKeys(Keys.ARROW_DOWN);
-        //code for mainitem 3
+        //code for main item 3
         myobjofwidgetpage.getMainitem3().click();
         driver.quit();
 
