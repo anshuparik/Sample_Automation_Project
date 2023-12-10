@@ -79,7 +79,7 @@ public class widgets extends baseclass {
         myobjofwidgetpage.getStartnstop().click();
         Thread.sleep(2000);
         myobjofwidgetpage.getStartnstop().click();
-        String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-value-now");
+        String text = driver.findElement(By.xpath("//div[@role='progressbar']")).getAttribute("aria-valuenow");
         Assert.assertEquals(text, "21");
         driver.quit();
     }
