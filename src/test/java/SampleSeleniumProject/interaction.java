@@ -2,6 +2,7 @@ package SampleSeleniumProject;
 
 import Objectrepo.Objofinteractionpage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -87,27 +88,29 @@ public class interaction extends baseclass {
     }
 
     @Test
-    public void resizable() throws IOException {
+    public void resizable() throws IOException, InterruptedException {
         driver = initializeDriver();
-/*
-     {
-       //  WebElement element = driver.findElement(By.xpath("(//span[@class='react-resizable-handle react-resizable-handle-se'])[1]"));
-         WebElement element3 = driver.findElement(By.xpath("//div[@id='resizable']//span[@class='react-resizable-handle react-resizable-handle-se']"));
-         Actions builder = new Actions(driver);
-         builder.clickAndHold(element3).moveByOffset(50,50).release().build().perform();
-     }
-     {
-         WebElement element = driver.findElement(By.xpath("(//span[@class='react-resizable-handle react-resizable-handle-se'])[1]"));
-         Actions builder = new Actions(driver);
-         builder.moveToElement(element).perform();
-     }
-     {
-         WebElement element = driver.findElement(By.xpath("(//span[@class='react-resizable-handle react-resizable-handle-se'])[1]"));
-         Actions builder = new Actions(driver);
-         builder.moveToElement(element).release().perform();
-     }*/
+        Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        driver.get("https://demoqa.com/resizable");
+        {
+            // Resizable_box
+            js.executeScript("arguments[0].scrollIntoView();", myObjofinteractionpage.getConstraint_area());
+            Actions builder = new Actions(driver);
+            builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_1(), 500, 300).perform();
+            builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_1(), 150, 150).perform();
+        }
+        {
+            //resizable
+            js.executeScript("arguments[0].scrollIntoView();", myObjofinteractionpage.getResizable());
+            Actions builder = new Actions(driver);
+            builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 728, 186).perform();
 
-        //Need to fix
+            builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 50, 50).perform();
+
+        }
+
+        driver.quit();
 
     }
 

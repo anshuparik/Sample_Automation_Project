@@ -28,10 +28,39 @@ public class Objofinteractionpage {
     @FindBy(xpath = "//li[text()='Three']")
     WebElement clickonthree;
 
+    @FindBy(xpath = "//div[@class='constraint-area']")
+    WebElement constraint_area;
+
+    @FindBy(xpath = "(//span[@class='react-resizable-handle react-resizable-handle-se'])[1]")
+    WebElement resizable_box_1;
+
+    @FindBy(xpath = "//div[@id='resizable']")
+    WebElement resizable;
+
+    @FindBy(xpath = "(//span[@class='react-resizable-handle react-resizable-handle-se'])[2]")
+    WebElement resizable_box_2;
+
     public Objofinteractionpage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
+    }
+
+    public WebElement getResizable_box_2() {
+        return resizable_box_2;
+    }
+
+    public WebElement getResizable() {
+        return resizable;
+    }
+
+
+    public WebElement getResizable_box_1() {
+        return resizable_box_1;
+    }
+
+    public WebElement getConstraint_area() {
+        return constraint_area;
     }
 
     public WebElement getClickongrid() {
