@@ -105,7 +105,6 @@ public class interaction extends baseclass {
             js.executeScript("arguments[0].scrollIntoView();", myObjofinteractionpage.getResizable());
             Actions builder = new Actions(driver);
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 728, 186).perform();
-
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 50, 50).perform();
 
         }
