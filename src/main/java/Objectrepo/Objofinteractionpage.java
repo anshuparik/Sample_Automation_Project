@@ -40,10 +40,66 @@ public class Objofinteractionpage {
     @FindBy(xpath = "(//span[@class='react-resizable-handle react-resizable-handle-se'])[2]")
     WebElement resizable_box_2;
 
+    @FindBy(id = "draggable")
+    WebElement draggable;
+
+    @FindBy(xpath = "(//div[@id='droppable'])[1]")
+    WebElement droppable_1;
+
+    @FindBy(id = "droppableExample-tab-accept")
+    WebElement clickonaccept;
+
+    @FindBy(id = "acceptable")
+    WebElement acceptable;
+
+    @FindBy(id = "notAcceptable")
+    WebElement notAcceptable;
+
+    @FindBy(xpath = "(//div[@id='droppable'])[2]")
+    WebElement droppable_2;
+
+    @FindBy(id = "droppableExample-tab-preventPropogation")
+    WebElement preventPropogation;
+
+    @FindBy(id = "dragBox")
+    WebElement dragBox;
+
     public Objofinteractionpage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
+    }
+
+    public WebElement getDragBox() {
+        return dragBox;
+    }
+
+    public WebElement getPreventPropogation() {
+        return preventPropogation;
+    }
+
+    public WebElement getAcceptable() {
+        return acceptable;
+    }
+
+    public WebElement getDroppable_2() {
+        return droppable_2;
+    }
+
+    public WebElement getNotAcceptable() {
+        return notAcceptable;
+    }
+
+    public WebElement getClickonaccept() {
+        return clickonaccept;
+    }
+
+    public WebElement getDraggable() {
+        return draggable;
+    }
+
+    public WebElement getDroppable_1() {
+        return droppable_1;
     }
 
     public WebElement getResizable_box_2() {

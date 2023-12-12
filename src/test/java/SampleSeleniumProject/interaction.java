@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
@@ -88,28 +89,69 @@ public class interaction extends baseclass {
     }
 
     @Test
-    public void resizable() throws IOException, InterruptedException {
+    public void resizable() throws IOException {
         driver = initializeDriver();
         Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        Actions builder = new Actions(driver);
         driver.get("https://demoqa.com/resizable");
         {
             // Resizable_box
             js.executeScript("arguments[0].scrollIntoView();", myObjofinteractionpage.getConstraint_area());
-            Actions builder = new Actions(driver);
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_1(), 500, 300).perform();
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_1(), 150, 150).perform();
         }
         {
             //resizable
             js.executeScript("arguments[0].scrollIntoView();", myObjofinteractionpage.getResizable());
-            Actions builder = new Actions(driver);
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 728, 186).perform();
             builder.dragAndDropBy(myObjofinteractionpage.getResizable_box_2(), 50, 50).perform();
 
         }
 
         driver.quit();
+
+    }
+
+    @Test
+    public void droppable() throws IOException {
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/droppable");
+        Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
+        Actions builder = new Actions(driver);
+
+       {
+            //simple
+            builder.dragAndDrop(myObjofinteractionpage.getDraggable(), myObjofinteractionpage.getDroppable_1()).perform();
+         String text =   myObjofinteractionpage.getDroppable_1().getText();
+            Assert.assertEquals("Dropped!",text);
+
+        }
+
+        {
+            //accept
+            myObjofinteractionpage.getClickonaccept().click();
+            builder.dragAndDrop(myObjofinteractionpage.getNotAcceptable(), myObjofinteractionpage.getDroppable_2()).perform();
+            //obtain color in rgb
+            String color_1 = myObjofinteractionpage.getDroppable_2().getCssValue("color");
+            String text_1 = myObjofinteractionpage.getDroppable_2().getText();
+            Assert.assertEquals(color_1, "rgba(33, 37, 41, 1)");
+            Assert.assertEquals(text_1, "Drop here");
+            builder.dragAndDrop(myObjofinteractionpage.getAcceptable(), myObjofinteractionpage.getDroppable_2()).perform();
+            String color_2 = myObjofinteractionpage.getDroppable_2().getCssValue("background-color");
+            String text_2 = myObjofinteractionpage.getDroppable_2().getText();
+            Assert.assertEquals(color_2, "rgba(70, 130, 180, 1)");
+            Assert.assertEquals(text_2, "Dropped!");
+
+        }
+
+        {
+            //prevent Propogation
+            myObjofinteractionpage.getPreventPropogation().click();
+            //need to fix
+
+
+        }
 
     }
 
