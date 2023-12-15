@@ -72,8 +72,6 @@ public class Objofinteractionpage {
     @FindBy(xpath = "(//div[@id='droppable'])[2]")
     WebElement droppable_2;
 
-    @FindBy(id = "droppableExample-tab-preventPropogation")
-    WebElement preventPropogation;
 
     @FindBy(id = "dragBox")
     WebElement dragBox;
@@ -146,9 +144,7 @@ public class Objofinteractionpage {
         return dragBox;
     }
 
-    public WebElement getPreventPropogation() {
-        return preventPropogation;
-    }
+
 
     public WebElement getAcceptable() {
         return acceptable;

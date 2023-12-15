@@ -185,7 +185,7 @@ public class interaction extends baseclass {
     }
 
     @Test
-    public void dragabble() throws IOException, InterruptedException {
+    public void dragabble() throws IOException {
         driver = initializeDriver();
         driver.get("https://demoqa.com/dragabble");
         Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
