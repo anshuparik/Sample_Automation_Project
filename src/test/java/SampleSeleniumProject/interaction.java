@@ -22,12 +22,12 @@ public class interaction extends baseclass {
         Objofinteractionpage myobjofinteractionpage = new Objofinteractionpage(driver);
         driver.get("https://demoqa.com/sortable");
         Actions action = new Actions(driver);
-       {
+        {
             List<WebElement> list = driver.findElements(By.xpath("//* [@id='demo-tabpane-list']/div/div"));
 
-            for(int i =1;i<list.size();i++) {
+            for (int i = 1; i < list.size(); i++) {
 
-                WebElement element = driver.findElement(By.xpath("//*[@id='demo-tabpane-list']/div/div["+ i +"]"));
+                WebElement element = driver.findElement(By.xpath("//*[@id='demo-tabpane-list']/div/div[" + i + "]"));
 
                 WebElement destination6 = myobjofinteractionpage.getSix();
                 WebElement destination5 = myobjofinteractionpage.getFive();
@@ -36,7 +36,7 @@ public class interaction extends baseclass {
                 WebElement destination2 = myobjofinteractionpage.getTwo();
                 WebElement destination1 = myobjofinteractionpage.getOne();
 
-                if(element!=null) {
+                if (element != null) {
                     action.dragAndDrop(element, destination6).perform();
                     action.dragAndDrop(element, destination5).perform();
                     action.dragAndDrop(element, destination4).perform();
@@ -54,11 +54,11 @@ public class interaction extends baseclass {
             Actions builder = new Actions(driver);
             WebElement source = driver.findElement(By.xpath("(//div[text()='One'])[2]"));
             WebElement target = driver.findElement(By.xpath("(//div[text()='Four'])[2]"));
-            builder.clickAndHold(source).dragAndDrop(source,target).moveToElement(source).release().perform();
+            builder.clickAndHold(source).dragAndDrop(source, target).moveToElement(source).release().perform();
 
             //need to fix
         }
-
+        driver.quit();
 
     }
 
@@ -142,11 +142,11 @@ public class interaction extends baseclass {
         Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
         Actions builder = new Actions(driver);
 
-       {
+        {
             //simple
             builder.dragAndDrop(myObjofinteractionpage.getDraggable(), myObjofinteractionpage.getDroppable_1()).perform();
-         String text =   myObjofinteractionpage.getDroppable_1().getText();
-            Assert.assertEquals("Dropped!",text);
+            String text = myObjofinteractionpage.getDroppable_1().getText();
+            Assert.assertEquals("Dropped!", text);
 
         }
 
@@ -170,9 +170,9 @@ public class interaction extends baseclass {
         {
             //Revert Draggable
             myObjofinteractionpage.getClickonrevertable().click();
-            builder.dragAndDrop(myObjofinteractionpage.getRevertable(),myObjofinteractionpage.getDroppable_3()).perform();
+            builder.dragAndDrop(myObjofinteractionpage.getRevertable(), myObjofinteractionpage.getDroppable_3()).perform();
             String color_1 = myObjofinteractionpage.getDroppable_3().getCssValue("color");
-            Assert.assertEquals(color_1,"rgba(33, 37, 41, 1)");
+            Assert.assertEquals(color_1, "rgba(33, 37, 41, 1)");
 
             builder.dragAndDrop(myObjofinteractionpage.getNotRevertable(), myObjofinteractionpage.getDroppable_3()).perform();
             String color_2 = myObjofinteractionpage.getDroppable_3().getCssValue("background-color");
@@ -189,8 +189,8 @@ public class interaction extends baseclass {
         driver = initializeDriver();
         driver.get("https://demoqa.com/dragabble");
         Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
-       Actions builder = new Actions(driver);
-       {
+        Actions builder = new Actions(driver);
+        {
             //Simple
             builder.moveToElement(myObjofinteractionpage.getDragBox()).clickAndHold().perform();
             builder.moveToElement(myObjofinteractionpage.getFordragelement()).perform();
@@ -200,20 +200,20 @@ public class interaction extends baseclass {
         {
             WebElement element = driver.findElement(By.xpath("//div[@class='col-12 mt-4 col-md-6']"));
             myObjofinteractionpage.getClickonaxisRestriction().click();
-           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).clickAndHold().perform();
-           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).perform();
-           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).release().perform();
+            builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).clickAndHold().perform();
+            builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).perform();
+            builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).release().perform();
 
             builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).clickAndHold().perform();
             builder.moveToElement(element).perform();
             builder.moveToElement(element).release().perform();
             //builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).perform();
-           // builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).release().perform();
+            // builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).release().perform();
 
             //Need to fix
         }
 
-
+        driver.quit();
     }
 
 

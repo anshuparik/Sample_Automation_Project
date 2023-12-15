@@ -14,8 +14,24 @@ public class Objofelementspage {
     By homecheckbox = By.xpath("//span[@class='rct-checkbox']");
     By name = By.xpath("//p[@id='name']");
 
+    By yes = By.xpath("//label[contains(.,'Yes')]");
+    By impressive = By.xpath("//label[contains(.,'Impressive')]");
+    By noradio = By.cssSelector("input[id='noRadio']");
+
     public Objofelementspage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebElement yes() {
+        return driver.findElement(yes);
+    }
+
+    public WebElement impressive() {
+        return driver.findElement(impressive);
+    }
+
+    public WebElement noradio() {
+        return driver.findElement(noradio);
     }
 
     public WebElement Fullname() {
@@ -45,4 +61,6 @@ public class Objofelementspage {
     public WebElement name() {
         return driver.findElement(name);
     }
+
+
 }

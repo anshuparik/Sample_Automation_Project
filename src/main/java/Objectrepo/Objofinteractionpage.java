@@ -110,7 +110,6 @@ public class Objofinteractionpage {
     }
 
 
-
     public WebElement getClickonrestrictedY() {
         return clickonrestrictedY;
     }

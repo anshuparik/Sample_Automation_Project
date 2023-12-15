@@ -37,5 +37,47 @@ public class elements extends baseclass {
         driver.get("https://demoqa.com/checkbox");
         myobjofelement.homecheckbox().click();
         driver.quit();
+        //we can also more cases here
     }
+
+    @Test
+    public void radio_button() throws IOException {
+        driver = initializeDriver();
+        Objofelementspage myobjofelement = new Objofelementspage(driver);
+        driver.get("https://demoqa.com/radio-button");
+
+        {
+            boolean select = myobjofelement.yes().isSelected();
+            if (!select) {
+                myobjofelement.yes().click();
+            }
+        }
+
+        {
+
+
+            boolean select = myobjofelement.impressive().isEnabled();
+            if (select) {
+                myobjofelement.impressive().click();
+            }
+
+        }
+
+        {
+
+            boolean select = myobjofelement.noradio().isEnabled();
+            if (select) {
+                myobjofelement.noradio().click();
+            }
+        }
+
+        driver.quit();
+
+    }
+
+
 }
+
+
+
+
