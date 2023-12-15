@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import resources.baseclass;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class interaction extends baseclass {
@@ -20,12 +21,32 @@ public class interaction extends baseclass {
         driver = initializeDriver();
         Objofinteractionpage myobjofinteractionpage = new Objofinteractionpage(driver);
         driver.get("https://demoqa.com/sortable");
-        {
-            Actions builder = new Actions(driver);
-            builder.clickAndHold(myobjofinteractionpage.getOne()).perform();
-            builder.moveToElement(myobjofinteractionpage.getFour()).perform();
-            builder.release(myobjofinteractionpage.getOne());
-            //need to fix
+        Actions action = new Actions(driver);
+       {
+            List<WebElement> list = driver.findElements(By.xpath("//* [@id='demo-tabpane-list']/div/div"));
+
+            for(int i =1;i<list.size();i++) {
+
+                WebElement element = driver.findElement(By.xpath("//*[@id='demo-tabpane-list']/div/div["+ i +"]"));
+
+                WebElement destination6 = myobjofinteractionpage.getSix();
+                WebElement destination5 = myobjofinteractionpage.getFive();
+                WebElement destination4 = myobjofinteractionpage.getFour();
+                WebElement destination3 = myobjofinteractionpage.getThree();
+                WebElement destination2 = myobjofinteractionpage.getTwo();
+                WebElement destination1 = myobjofinteractionpage.getOne();
+
+                if(element!=null) {
+                    action.dragAndDrop(element, destination6).perform();
+                    action.dragAndDrop(element, destination5).perform();
+                    action.dragAndDrop(element, destination4).perform();
+                    action.dragAndDrop(element, destination3).perform();
+                    action.dragAndDrop(element, destination2).perform();
+                    action.dragAndDrop(element, destination1).perform();
+                    break;
+                }
+            }
+
         }
         {
             //grid
@@ -33,7 +54,8 @@ public class interaction extends baseclass {
             Actions builder = new Actions(driver);
             WebElement source = driver.findElement(By.xpath("(//div[text()='One'])[2]"));
             WebElement target = driver.findElement(By.xpath("(//div[text()='Four'])[2]"));
-            builder.dragAndDrop(source, target).release().perform();
+            builder.clickAndHold(source).dragAndDrop(source,target).moveToElement(source).release().perform();
+
             //need to fix
         }
 
@@ -146,12 +168,51 @@ public class interaction extends baseclass {
         }
 
         {
-            //prevent Propogation
-            myObjofinteractionpage.getPreventPropogation().click();
-            //need to fix
+            //Revert Draggable
+            myObjofinteractionpage.getClickonrevertable().click();
+            builder.dragAndDrop(myObjofinteractionpage.getRevertable(),myObjofinteractionpage.getDroppable_3()).perform();
+            String color_1 = myObjofinteractionpage.getDroppable_3().getCssValue("color");
+            Assert.assertEquals(color_1,"rgba(33, 37, 41, 1)");
 
+            builder.dragAndDrop(myObjofinteractionpage.getNotRevertable(), myObjofinteractionpage.getDroppable_3()).perform();
+            String color_2 = myObjofinteractionpage.getDroppable_3().getCssValue("background-color");
+            Assert.assertEquals(color_2, "rgba(70, 130, 180, 1)");
 
         }
+
+        driver.quit();
+
+    }
+
+    @Test
+    public void dragabble() throws IOException, InterruptedException {
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/dragabble");
+        Objofinteractionpage myObjofinteractionpage = new Objofinteractionpage(driver);
+       Actions builder = new Actions(driver);
+       {
+            //Simple
+            builder.moveToElement(myObjofinteractionpage.getDragBox()).clickAndHold().perform();
+            builder.moveToElement(myObjofinteractionpage.getFordragelement()).perform();
+            builder.moveToElement(myObjofinteractionpage.getFordragelement()).release().perform();
+        }
+
+        {
+            WebElement element = driver.findElement(By.xpath("//div[@class='col-12 mt-4 col-md-6']"));
+            myObjofinteractionpage.getClickonaxisRestriction().click();
+           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).clickAndHold().perform();
+           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).perform();
+           builder.moveToElement(myObjofinteractionpage.getClickonrestrictedX()).release().perform();
+
+            builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).clickAndHold().perform();
+            builder.moveToElement(element).perform();
+            builder.moveToElement(element).release().perform();
+            //builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).perform();
+           // builder.moveToElement(myObjofinteractionpage.getClickonrestrictedY()).release().perform();
+
+            //Need to fix
+        }
+
 
     }
 

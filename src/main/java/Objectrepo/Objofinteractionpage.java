@@ -7,11 +7,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Objofinteractionpage {
     WebDriver driver;
-    @FindBy(xpath = "(//div[text()='One'])[1]")
+
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[1]")
     WebElement one;
 
-    @FindBy(xpath = "(//div[text()='Four'])[1]")
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[2]")
+    WebElement two;
+
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[3]")
+    WebElement three;
+
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[4]")
     WebElement four;
+
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[5]")
+    WebElement five;
+
+    @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[6]")
+    WebElement six;
+
 
     @FindBy(css = ".mt-2:nth-child(1)")
     WebElement Cras_justo_odio;
@@ -64,10 +78,69 @@ public class Objofinteractionpage {
     @FindBy(id = "dragBox")
     WebElement dragBox;
 
+    @FindBy(id = "droppableExample-tab-revertable")
+    WebElement clickonrevertable;
+
+    @FindBy(id = "revertable")
+    WebElement revertable;
+
+    @FindBy(id = "notRevertable")
+    WebElement notRevertable;
+
+    @FindBy(xpath = "(//div[@id='droppable'])[3]")
+    WebElement droppable_3;
+
+    @FindBy(xpath = "//div[@class='col-12 mt-4 col-md-6']")
+    WebElement fordragelement;
+
+    @FindBy(id = "draggableExample-tab-axisRestriction")
+    WebElement clickonaxisRestriction;
+
+    @FindBy(id = "restrictedX")
+    WebElement clickonrestrictedX;
+
+    @FindBy(id = "restrictedY")
+    WebElement clickonrestrictedY;
+
+
     public Objofinteractionpage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
+    }
+
+
+
+    public WebElement getClickonrestrictedY() {
+        return clickonrestrictedY;
+    }
+
+    public WebElement getClickonrestrictedX() {
+        return clickonrestrictedX;
+    }
+
+    public WebElement getClickonaxisRestriction() {
+        return clickonaxisRestriction;
+    }
+
+    public WebElement getFordragelement() {
+        return fordragelement;
+    }
+
+    public WebElement getDroppable_3() {
+        return droppable_3;
+    }
+
+    public WebElement getNotRevertable() {
+        return notRevertable;
+    }
+
+    public WebElement getRevertable() {
+        return revertable;
+    }
+
+    public WebElement getClickonrevertable() {
+        return clickonrevertable;
     }
 
     public WebElement getDragBox() {
@@ -143,7 +216,23 @@ public class Objofinteractionpage {
         return one;
     }
 
+    public WebElement getThree() {
+        return three;
+    }
+
+    public WebElement getFive() {
+        return five;
+    }
+
     public WebElement getFour() {
         return four;
+    }
+
+    public WebElement getTwo() {
+        return two;
+    }
+
+    public WebElement getSix() {
+        return six;
     }
 }
