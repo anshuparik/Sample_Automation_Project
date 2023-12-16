@@ -3,11 +3,17 @@ package SampleSeleniumProject;
 import Objectrepo.Objofelementspage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v85.network.Network;
+import org.openqa.selenium.devtools.v85.network.model.Response;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class elements extends baseclass {
     //Used Java inheritance concept here
@@ -54,8 +60,6 @@ public class elements extends baseclass {
         }
 
         {
-
-
             boolean select = myobjofelement.impressive().isEnabled();
             if (select) {
                 myobjofelement.impressive().click();
@@ -75,8 +79,110 @@ public class elements extends baseclass {
 
     }
 
+    @Test
+    public void buttons() throws IOException {
+        driver = initializeDriver();
+        Objofelementspage myobjofelement = new Objofelementspage(driver);
+        driver.get("https://demoqa.com/buttons");
+        Actions builder = new Actions(driver);
 
+        {
+            builder.doubleClick(myobjofelement.doubleclick()).perform();
+            String message = myobjofelement.doubleClickMessage().getText();
+            Assert.assertEquals(message, "You have done a double click");
+        }
+        {
+            builder.contextClick(myobjofelement.rightclick()).perform();
+            String message = myobjofelement.rightClickMessage().getText();
+            Assert.assertEquals(message, "You have done a right click");
+        }
+        {
+
+            builder.click(myobjofelement.clickme()).perform();
+            String message = myobjofelement.dynamicClickMessage().getText();
+            Assert.assertEquals(message, "You have done a dynamic click");
+        }
+
+        driver.quit();
+    }
+
+    @Test
+    public void links() throws IOException {
+        driver = initializeDriver();
+        Objofelementspage myobjofelement = new Objofelementspage(driver);
+        driver.get("https://demoqa.com/links");
+/*
+        { // Get the handle of the parent window
+            String parentWindowHandle = driver.getWindowHandle();
+
+            // Click on the first link ("simpleLink") which opens a new tab
+            myobjofelement.Home().click();
+
+            // Switch to the new tab
+            for (String windowHandle : driver.getWindowHandles()) {
+                if (!windowHandle.equals(parentWindowHandle)) {
+                    driver.switchTo().window(windowHandle);
+                    break;
+                }
+            }
+
+            // Verify the URL of the new tab
+            String url1 = driver.getCurrentUrl();
+            Assert.assertEquals(url1, "https://demoqa.com/");
+
+            // Close the new tab (optional)
+            driver.close();
+
+            // Switch back to the parent window
+            driver.switchTo().window(parentWindowHandle);
+
+            // Click on the second link ("dynamicLink") which opens another new tab
+            myobjofelement.DynamicHomecheckbox().click();
+
+            // Switch to the new tab
+            for (String windowHandle : driver.getWindowHandles()) {
+                if (!windowHandle.equals(parentWindowHandle)) {
+                    driver.switchTo().window(windowHandle);
+                    break;
+                }
+            }
+
+            // Verify the URL of the second new tab
+            String url2 = driver.getCurrentUrl();
+            Assert.assertEquals(url2, "https://demoqa.com/");
+
+            // Close the second new tab (optional)
+            driver.close();
+
+            // Switch back to the parent window
+            driver.switchTo().window(parentWindowHandle);
+        }*/
+
+        {
+            ChromeDriver driver = new ChromeDriver();
+            DevTools devtools = driver.getDevTools();
+            devtools.createSession();
+            devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+            //EVENT will tiggired
+
+            devtools.addListener(Network.responseReceived(), responseReceived -> {
+                Response myresponse = responseReceived.getResponse();
+                System.out.println(myresponse.getStatus());
+            });
+            myobjofelement.created().click();
+
+        }
+
+    }
 }
+
+
+
+
+
+
+
+
 
 
 
