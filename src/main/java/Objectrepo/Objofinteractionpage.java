@@ -14,11 +14,13 @@ public class Objofinteractionpage {
     @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[2]")
     WebElement two;
 
+
     @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[3]")
     WebElement three;
 
     @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[4]")
     WebElement four;
+
 
     @FindBy(xpath = "//*[@id='demo-tabpane-list']/div/div[5]")
     WebElement five;
@@ -69,6 +71,7 @@ public class Objofinteractionpage {
     @FindBy(id = "notAcceptable")
     WebElement notAcceptable;
 
+
     @FindBy(xpath = "(//div[@id='droppable'])[2]")
     WebElement droppable_2;
 
@@ -85,17 +88,20 @@ public class Objofinteractionpage {
     @FindBy(id = "notRevertable")
     WebElement notRevertable;
 
+
     @FindBy(xpath = "(//div[@id='droppable'])[3]")
     WebElement droppable_3;
 
     @FindBy(xpath = "//div[@class='col-12 mt-4 col-md-6']")
     WebElement fordragelement;
 
+
     @FindBy(id = "draggableExample-tab-axisRestriction")
     WebElement clickonaxisRestriction;
 
     @FindBy(id = "restrictedX")
     WebElement clickonrestrictedX;
+
 
     @FindBy(id = "restrictedY")
     WebElement clickonrestrictedY;
@@ -108,24 +114,16 @@ public class Objofinteractionpage {
     }
 
 
-    public WebElement getClickonrestrictedY() {
-        return clickonrestrictedY;
-    }
-
     public WebElement getClickonrestrictedX() {
         return clickonrestrictedX;
-    }
-
-    public WebElement getClickonaxisRestriction() {
-        return clickonaxisRestriction;
     }
 
     public WebElement getFordragelement() {
         return fordragelement;
     }
 
-    public WebElement getDroppable_3() {
-        return droppable_3;
+    public WebElement getClickonaxisRestriction() {
+        return clickonaxisRestriction;
     }
 
     public WebElement getNotRevertable() {
@@ -145,13 +143,8 @@ public class Objofinteractionpage {
     }
 
 
-
     public WebElement getAcceptable() {
         return acceptable;
-    }
-
-    public WebElement getDroppable_2() {
-        return droppable_2;
     }
 
     public WebElement getNotAcceptable() {
@@ -211,6 +204,14 @@ public class Objofinteractionpage {
         return one;
     }
 
+    public WebElement getFour() {
+        return four;
+    }
+
+    public WebElement getTwo() {
+        return two;
+    }
+
     public WebElement getThree() {
         return three;
     }
@@ -219,12 +220,16 @@ public class Objofinteractionpage {
         return five;
     }
 
-    public WebElement getFour() {
-        return four;
+    public WebElement getDroppable_3() {
+        return droppable_3;
     }
 
-    public WebElement getTwo() {
-        return two;
+    public WebElement getClickonrestrictedY() {
+        return clickonrestrictedY;
+    }
+
+    public WebElement getDroppable_2() {
+        return droppable_2;
     }
 
     public WebElement getSix() {

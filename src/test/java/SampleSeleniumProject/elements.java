@@ -3,17 +3,12 @@ package SampleSeleniumProject;
 import Objectrepo.Objofelementspage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v85.network.Network;
-import org.openqa.selenium.devtools.v85.network.model.Response;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class elements extends baseclass {
     //Used Java inheritance concept here
@@ -111,7 +106,7 @@ public class elements extends baseclass {
         driver = initializeDriver();
         Objofelementspage myobjofelement = new Objofelementspage(driver);
         driver.get("https://demoqa.com/links");
-/*
+
         { // Get the handle of the parent window
             String parentWindowHandle = driver.getWindowHandle();
 
@@ -156,25 +151,38 @@ public class elements extends baseclass {
 
             // Switch back to the parent window
             driver.switchTo().window(parentWindowHandle);
-        }*/
 
-        {
-            ChromeDriver driver = new ChromeDriver();
-            DevTools devtools = driver.getDevTools();
-            devtools.createSession();
-            devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
-            //EVENT will tiggired
-
-            devtools.addListener(Network.responseReceived(), responseReceived -> {
-                Response myresponse = responseReceived.getResponse();
-                System.out.println(myresponse.getStatus());
-            });
-            myobjofelement.created().click();
-
+            driver.quit();
         }
 
+//        {
+//            // Initialize DevTools for the existing driver
+//            DevTools devtools = ((ChromeDriver) driver).getDevTools();
+//            devtools.createSession();
+//            devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+//
+//            // EVENT will be triggered
+//            devtools.addListener(Network.responseReceived(), responseReceived -> {
+//                Response myresponse = responseReceived.getResponse();
+//                System.out.println(myresponse.getStatus());
+        //need to fix
+//            });
+
+
+        // Click on the link using the existing driver instance
+        // myobjofelement.created().click();
+
+        // Add any additional test logic or assertions here
+
+
     }
+
 }
+
+
+
+
+
 
 
 
