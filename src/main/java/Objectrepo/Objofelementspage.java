@@ -46,8 +46,24 @@ public class Objofelementspage {
 
     By uploadbutton = By.id("uploadFile");
 
+    By enableAfter = By.id("enableAfter");
+    By colorChange = By.id("colorChange");
+    By visibleAfter = By.id("visibleAfter");
+
     public Objofelementspage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebElement getEnableAfter() {
+        return driver.findElement(enableAfter);
+    }
+
+    public WebElement getColorChange() {
+        return driver.findElement(colorChange);
+    }
+
+    public WebElement getVisibleAfter() {
+        return driver.findElement(visibleAfter);
     }
 
     public WebElement downloadbutton() {
@@ -57,6 +73,8 @@ public class Objofelementspage {
     public WebElement uploadFile() {
         return driver.findElement(uploadbutton);
     }
+
+
 
     public WebElement No_Content() {
         return driver.findElement(No_Content);

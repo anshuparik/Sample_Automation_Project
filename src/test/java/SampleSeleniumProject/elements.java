@@ -1,6 +1,7 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofelementspage;
+import jdk.jfr.Timespan;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
@@ -20,6 +23,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,7 +75,7 @@ public class elements extends baseclass {
         driver.get("https://demoqa.com/checkbox");
         myobjofelement.homecheckbox().click();
         driver.quit();
-        //we can also more cases here
+        //we can also add more cases here
     }
 
     @Test
@@ -309,6 +313,27 @@ public class elements extends baseclass {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Test
+    public void dynamic_properties() throws IOException {
+        driver = initializeDriver();
+        driver.get("https://demoqa.com/dynamic-properties") ;
+        Objofelementspage myobjofelement = new Objofelementspage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        {
+            String text =  driver.findElement(By.tagName("p")).getText();
+            Assert.assertEquals(text,"This text has random Id");
+        }
+        {
+            wait.until(ExpectedConditions.elementToBeClickable(myobjofelement.getEnableAfter())).click();
+            myobjofelement.getEnableAfter().isEnabled();
+        }
+        {
+            wait.until(ExpectedConditions.visibilityOf(myobjofelement.getVisibleAfter()));
+            myobjofelement.getVisibleAfter().isDisplayed();
+        }
+        driver.quit();
     }
 }
 
