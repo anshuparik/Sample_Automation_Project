@@ -3,16 +3,24 @@ package SampleSeleniumProject;
 import Objectrepo.Objofelementspage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import resources.baseclass;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 
 public class elements extends baseclass {
@@ -247,7 +255,7 @@ public class elements extends baseclass {
                     System.out.println("DISPLAY - BROKEN");
                 }
             } catch (Exception e) {
-                System.out.println("Error Occured");
+                System.out.println("Error Occurred");
             }
         }
 
@@ -255,7 +263,53 @@ public class elements extends baseclass {
         driver.quit();
     }
 
+    @Test
+    public void upload_download() throws InterruptedException {
+        //object for chrome options
+        ChromeOptions options = new ChromeOptions();
+        //will download in project work space not in local machine folder.
+        HashMap<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("profile.default_content_settings.popups", 0); //disabling download popup
+        String downloadFilepath = System.getProperty("user.dir");
+        chromePrefs.put("download.default_directory", downloadFilepath);
+        options.setExperimentalOption("prefs", chromePrefs);
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        Objofelementspage myobjofelement = new Objofelementspage(driver);
+        driver.get("https://demoqa.com/upload-download");
+        myobjofelement.downloadbutton().click();
+        Thread.sleep(5000);
+        File downloadfilepath = new File("A:\\Learn Automation\\Sample Automation Project\\sampleFile.jpeg");
+        if (downloadfilepath.exists()) {
+            System.out.println("file downloaded successfully");
+        } else {
+            System.out.println("file not downloaded");
+        }
+        //to upload
+        myobjofelement.uploadFile().sendKeys("A:\\Learn Automation\\Sample Automation Project\\sampleFile.jpeg");
+        String text = driver.findElement(By.id("uploadedFilePath")).getText();
+        Assert.assertEquals(text, "C:\\fakepath\\sampleFile.jpeg");
 
+        //clean downloaded file
+        if (deleteFile(downloadfilepath)) {
+            System.out.println("File deleted successfully");
+        }
+
+        driver.quit();
+
+    }
+
+    //create method in main to delete file from directory
+    private boolean deleteFile(File file) {
+        try {
+            Path path = Paths.get(file.getAbsolutePath());
+            Files.deleteIfExists(path);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 
 

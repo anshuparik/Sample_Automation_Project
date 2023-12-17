@@ -42,8 +42,20 @@ public class Objofelementspage {
     By Forbidden = By.id("linkWrapper");
     By Not_Found = By.id("invalid-url");
 
+    By download = By.id("downloadButton");
+
+    By uploadbutton = By.id("uploadFile");
+
     public Objofelementspage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebElement downloadbutton() {
+        return driver.findElement(download);
+    }
+
+    public WebElement uploadFile() {
+        return driver.findElement(uploadbutton);
     }
 
     public WebElement No_Content() {
