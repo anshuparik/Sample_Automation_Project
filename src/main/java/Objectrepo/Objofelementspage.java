@@ -75,7 +75,6 @@ public class Objofelementspage {
     }
 
 
-
     public WebElement No_Content() {
         return driver.findElement(No_Content);
     }

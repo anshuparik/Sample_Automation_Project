@@ -1,7 +1,6 @@
 package SampleSeleniumProject;
 
 import Objectrepo.Objofelementspage;
-import jdk.jfr.Timespan;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -318,12 +317,12 @@ public class elements extends baseclass {
     @Test
     public void dynamic_properties() throws IOException {
         driver = initializeDriver();
-        driver.get("https://demoqa.com/dynamic-properties") ;
+        driver.get("https://demoqa.com/dynamic-properties");
         Objofelementspage myobjofelement = new Objofelementspage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         {
-            String text =  driver.findElement(By.tagName("p")).getText();
-            Assert.assertEquals(text,"This text has random Id");
+            String text = driver.findElement(By.tagName("p")).getText();
+            Assert.assertEquals(text, "This text has random Id");
         }
         {
             wait.until(ExpectedConditions.elementToBeClickable(myobjofelement.getEnableAfter())).click();
