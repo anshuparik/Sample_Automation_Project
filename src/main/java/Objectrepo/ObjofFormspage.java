@@ -39,7 +39,9 @@ public class ObjofFormspage {
     @FindBy(id = "uploadPicture")
     WebElement uploadPicture;
 
-    @FindBy(xpath = "(//div[@class=' css-yk16xz-control'])[1]")
+    @FindBy(id = "state")
+
+   // @FindBy(xpath = "(//div[@class=' css-yk16xz-control'])[1]")
     WebElement select_state;
 
     @FindBy(xpath = "//div[text()='Select City']")

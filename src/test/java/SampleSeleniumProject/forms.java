@@ -88,7 +88,7 @@ public class forms extends baseclass {
             log.debug("text area created");
         }
 
-        {
+       /* {
             js.executeScript("document.body.style.zoom='50%'");
             // js.executeScript("arguments[0].scrollIntoView();", myelementsofFormspage.getSelect_state());
             String state = "NCR";
@@ -109,12 +109,16 @@ public class forms extends baseclass {
                     driver.findElement(By.xpath("//body//div[@id='app']//div[@id='city']//div//div//div[2]"));
                     driver.findElement(By.xpath("//body/div[@id='app']/div/div/div/div/div/form[@id='userForm']/div[@id='stateCity-wrapper']/div/div[@id='city']/div/div/div/div[1]"));
 //                    city.sendKeys("Delhi");
-//                    city.sendKeys(Keys.ENTER);*/
-        }
+//                    city.sendKeys(Keys.ENTER);
+        } */
+/*
         {
+            js.executeScript("document.body.style.zoom='50%'");
             js.executeScript("arguments[0].scrollIntoView();", myelementsofFormspage.getSubmit());
             myelementsofFormspage.getSubmit().click();
         }
+*/
+
 
 
     }
