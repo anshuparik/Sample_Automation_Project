@@ -3,7 +3,6 @@ package SampleSeleniumProject;
 import Objectrepo.ObjofFormspage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -118,7 +117,9 @@ public class forms extends baseclass {
             myelementsofFormspage.getSubmit().click();
         }
 */
-
+        {
+            driver.quit();
+        }
 
 
     }
