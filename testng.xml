@@ -2,54 +2,37 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="A:/Learn Automation/Sample Automation Project">
-        <classes>
-            <class name="SampleSeleniumProject.alertsWindows">
-                <methods>
-                    <include name="browser_windows"/>
-                    <include name="alerts"/>
-                    <include name="frames"/>
-                    <include name="nestedframes"/>
-                    <include name="modal_dialogs"/>
-                </methods>
-            </class>
-            <class name="SampleSeleniumProject.elements">
-                <methods>
-                    <include name="Textbox"/>
-                    <include name="Checkbox"/>
-                    <include name="radio_button"/>
-                    <include name="buttons"/>
-                    <include name="links"/>
-                    <include name="broken"/>
-                    <include name="upload_download"/>
-                    <include name="dynamic_properties"/>
-                </methods>
-            </class>
-            <class name="SampleSeleniumProject.forms">
-                <methods>
-                    <exclude name="practice_form"/>
-                </methods>
-            </class>
-            <class name="SampleSeleniumProject.interaction">
-                <methods>
-                    <include name="sortable"/>
-                    <include name="selectable"/>
-                    <include name="resizable"/>
-                    <include name="droppable"/>
-                    <include name="dragabble"/>
-                </methods>
-            </class>
-            <class name="SampleSeleniumProject.widgets">
-                <methods>
-                    <include name="accordion"/>
-                    <include name="auto_complete"/>
-                    <include name="slider"/>
-                    <include name="progress_bar"/>
-                    <include name="tabs"/>
-                    <include name="tool_tips"/>
-                    <include name="menu"/>
-                    <include name="select_menu"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-</suite>
+        <classes><class name="SampleSeleniumProject.alertsWindows"><methods>
+            <include name="browser_windows"/>
+            <include name="alerts"/><include name="frames"/>
+            <include name="nestedframes"/>
+            <include name="modal_dialogs"/>
+        </methods></class><class name="SampleSeleniumProject.bookStoreApplication"><methods>
+            <include name="login"/></methods></class>
+            <class name="SampleSeleniumProject.elements"><methods>
+                <include name="Textbox"/>
+                <include name="Checkbox"/>
+                <include name="radio_button"/>
+                <include name="buttons"/>
+                <include name="links"/>
+                <include name="broken"/>
+                <include name="upload_download"/>
+                <include name="dynamic_properties"/>
+            </methods></class><class name="SampleSeleniumProject.forms"><methods>
+                <include name="practice_form"/></methods>
+            </class><class name="SampleSeleniumProject.interaction"><methods>
+                <include name="sortable"/>
+                <include name="selectable"/>
+                <include name="resizable"/>
+                <include name="droppable"/>
+                <include name="dragabble"/></methods></class>
+            <class name="SampleSeleniumProject.widgets"><methods>
+                <include name="accordion"/>
+                <include name="auto_complete"/>
+                <include name="slider"/>
+                <include name="progress_bar"/>
+                <include name="tabs"/>
+                <include name="tool_tips"/>
+                <include name="menu"/>
+                <include name="select_menu"/>
+            </methods></class></classes></test></suite>

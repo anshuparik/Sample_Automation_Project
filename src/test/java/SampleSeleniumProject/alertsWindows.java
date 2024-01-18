@@ -21,7 +21,6 @@ import java.util.Set;
 public class alertsWindows extends baseclass {
     public static Logger log = LogManager.getLogger(forms.class.getName());
 
-
     @Test
     public void browser_windows() throws IOException {
         driver = initializeDriver();
